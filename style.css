@@ -1,23 +1,27 @@
 #game-board {
+
     display: grid;
+
     grid-template-columns: repeat(5, 50px);
+
     gap: 5px;
+
     margin-top: 20px;
+
 }
 
-#game-stats {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 10px 0;
-}
-
-#current-moves { color: #d32f2f; }
-#target-moves { color: #388e3c; }
 .cell {
+
     width: 50px;
+
     height: 50px;
+
     border: 1px solid #333;
+
     cursor: pointer;
+
 }
+
 .on { background-color: #ffd700; }
+
 .off { background-color: #555; }
