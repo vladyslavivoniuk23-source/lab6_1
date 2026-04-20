@@ -9,7 +9,16 @@
     margin-top: 20px;
 
 }
+#stats {
+    margin: 20px 0;
+    font-size: 18px;
+    font-family: sans-serif;
+}
 
+#stats button {
+    padding: 5px 15px;
+    cursor: pointer;
+}
 .cell {
 
     width: 50px;
