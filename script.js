@@ -15,13 +15,6 @@ function loadLevel(index) {
     moveCount = 0; // Скидаємо лічильник при завантаженні рівня
     currentGrid = JSON.parse(JSON.stringify(levelsData[index].grid));
     
-    // Оновлюємо UI статистики
-    document.getElementById('move-count').textContent = moveCount;
-    
-    // Змінено: звертаємось до властивості .steps з вашого JSON
-    document.getElementById('target-moves').textContent = levelsData[index].steps || 0; 
-    
-    document.getElementById('status').textContent = "";
     
     render();
 }
