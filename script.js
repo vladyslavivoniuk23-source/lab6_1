@@ -1,5 +1,6 @@
 let currentGrid = [];
 let levelsData = [];
+let moves = 0; // Лічильник ходів
 
 async function init() {
     const response = await fetch('data/levels.json');
@@ -9,8 +10,19 @@ async function init() {
 }
 
 function loadLevel(index) {
+    moves = 0; // Скидаємо ходи при зміні рівня
     currentGrid = JSON.parse(JSON.stringify(levelsData[index].grid));
+    
+    // Оновлюємо ціль на екрані
+    document.getElementById('target-moves').textContent = levelsData[index].steps;
+    
+    updateStats();
     render();
+    document.getElementById('status').textContent = ""; // Очищуємо повідомлення про перемогу
+}
+
+function updateStats() {
+    document.getElementById('current-moves').textContent = moves;
 }
 
 function toggle(r, c) {
@@ -20,11 +32,16 @@ function toggle(r, c) {
 }
 
 function handleCellClick(r, c) {
+    // Збільшуємо лічильник ходів
+    moves++;
+    updateStats();
+
     toggle(r, c);     // Клік
     toggle(r - 1, c); // Вгору
     toggle(r + 1, c); // Вниз
     toggle(r, c - 1); // Вліво
     toggle(r, c + 1); // Вправо
+    
     render();
     checkWin();
 }
@@ -44,7 +61,9 @@ function render() {
 
 function checkWin() {
     const win = currentGrid.every(row => row.every(cell => cell === 0));
-    document.getElementById('status').textContent = win ? "Ви перемогли!" : "";
+    if (win) {
+        document.getElementById('status').textContent = "Ви перемогли!";
+    }
 }
 
 init();
