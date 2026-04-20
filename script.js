@@ -17,12 +17,14 @@ function loadLevel(index) {
     
     // Оновлюємо UI статистики
     document.getElementById('move-count').textContent = moveCount;
-    document.getElementById('target-moves').textContent = levelsData[index].targetMoves || 0;
+    
+    // Змінено: звертаємось до властивості .steps з вашого JSON
+    document.getElementById('target-moves').textContent = levelsData[index].steps || 0; 
+    
     document.getElementById('status').textContent = "";
     
     render();
 }
-
 function resetLevel() {
     loadLevel(currentLevelIndex); // Перезавантажуємо поточний рівень
 }
